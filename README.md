@@ -41,6 +41,6 @@ docker pull lheinlen/docker-geminabox
 If you wish to build the image yourself, you can execute the following command:
 
 ```
-docker build github.com/lheinlen/docker-jenkins
+docker build github.com/lheinlen/docker-geminabox
 ```
 
