@@ -8,6 +8,6 @@ RUN	apt-key update &&\
 	mkdir -p /opt/geminabox/
 ADD	files/config.ru /opt/geminabox/config.ru
 VOLUME	["/opt/geminabox/data"]
-EXPOSE	9292
+EXPOSE	80
 WORKDIR /opt/geminabox
 CMD	["/usr/local/bin/rackup"]
