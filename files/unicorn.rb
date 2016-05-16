@@ -6,7 +6,7 @@ preload_app true
 if environment == "development"
   worker_processes 1
 else
-  worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+  worker_processes Integer(ENV["WEB_CONCURRENCY"] || 6)
 end
 
 before_fork do |server, worker|
