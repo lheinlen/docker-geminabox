@@ -1,5 +1,8 @@
 require 'rubygems'
 require 'geminabox'
+require 'bundler'
+
+Bundler.require
 
 Geminabox.data = '/opt/geminabox/data'
 Geminabox.build_legacy = ENV['BUILD_LEGACY'] && ENV['BUILD_LEGACY'].downcase.strip == 'true'

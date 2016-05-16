@@ -1,13 +1,16 @@
-FROM		stackbrew/ubuntu:13.10
-MAINTAINER	Lucas Heinlen <lucas.heinlen@gmail.com>
+FROM ruby:2.3.1
+MAINTAINER	Lucas Heinlen <lucas.heinlen@gmail.com>, Quiqup <dev@quiqup.com>
 
-RUN	apt-key update &&\
-	apt-get update &&\
-	apt-get install -y ruby1.9.1 &&\
-	gem install --no-ri --no-rdoc geminabox &&\
-	mkdir -p /opt/geminabox/
-ADD	files/config.ru /opt/geminabox/config.ru
-VOLUME	["/opt/geminabox/data"]
+RUN mkdir -p /opt/geminabox/
+WORKDIR /opt/geminabox
+VOLUME '/opt/geminabox/data'
+
+ADD files/* ./
+RUN gem install bundler unicorn
+RUN bundle config --global path /usr/local/bundle
+RUN bundle install --binstubs --retry 5 --jobs 5
+
 EXPOSE	80
 WORKDIR /opt/geminabox
-CMD	["/usr/local/bin/rackup"]
+#CMD 'unicorn -c unicorn.rb -p 80'
+CMD 'rackup'
