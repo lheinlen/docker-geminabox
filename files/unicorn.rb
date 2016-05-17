@@ -3,6 +3,8 @@ environment = ENV['RACK_ENV'] || 'production'
 
 preload_app true
 
+timeout 240
+
 if environment == "development"
   worker_processes 1
 else
